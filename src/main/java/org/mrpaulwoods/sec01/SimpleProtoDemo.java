@@ -1,6 +1,6 @@
 package org.mrpaulwoods.sec01;
 
-import org.mrpaulwoods.models.PersonOuterClass;
+import org.mrpaulwoods.models.sec01.PersonOuterClass;
 import org.slf4j.Logger;
 
 public class SimpleProtoDemo {
