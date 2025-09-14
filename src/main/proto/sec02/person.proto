@@ -5,7 +5,11 @@ package sec02;
 option java_multiple_files = true;
 option java_package = "org.mrpaulwoods.models.sec02";
 
+/*
+multi line comment
+This is my proto
+ */
 message Person {
-  string name = 1;
+  string name = 1; // i can comment here as well
   int32 age = 2;
 }
