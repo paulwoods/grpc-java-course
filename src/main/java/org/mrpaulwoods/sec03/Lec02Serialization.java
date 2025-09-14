@@ -4,6 +4,8 @@ import org.mrpaulwoods.models.sec03.Person;
 import org.slf4j.Logger;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -30,11 +32,15 @@ public static final Path PATH = Path.of("person.out");
     }
 
     public static void serialize(Person person) throws IOException {
-        person.writeTo(Files.newOutputStream(PATH));
+        try (OutputStream os = Files.newOutputStream(PATH)) {
+            person.writeTo(os);
+        }
     }
 
     public static Person deserialize() throws IOException {
-        return Person.parseFrom(Files.newInputStream(PATH));
+        try (InputStream is = Files.newInputStream(PATH)) {
+            return Person.parseFrom(is);
+        }
     }
 
 }
