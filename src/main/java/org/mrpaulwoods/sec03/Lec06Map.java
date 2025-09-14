@@ -28,6 +28,10 @@ public class Lec06Map {
                 .build();
 
         log.info("dealer {}", dealer);
+
+        log.info("2002 ? {}", dealer.containsInventory(2002));
+        log.info("2003 ? {}", dealer.containsInventory(2003));
+        log.info("2002 model: {}", dealer.getInventoryOrThrow(2002));
     }
 
 }
