@@ -11,7 +11,7 @@ option java_package = "org.mrpaulwoods.models.sec04";
 message Person {
 
   string name = 1;
-  int32 age = 2;
+  optional int32 age = 2;
   sec04.common.Address address = 3;
   sec04.common.Car car = 4;
 }
