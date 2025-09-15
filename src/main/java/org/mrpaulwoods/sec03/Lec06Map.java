@@ -1,5 +1,6 @@
 package org.mrpaulwoods.sec03;
 
+import org.mrpaulwoods.models.sec03.BodyStyle;
 import org.mrpaulwoods.models.sec03.Car;
 import org.mrpaulwoods.models.sec03.Dealer;
 import org.slf4j.Logger;
@@ -14,12 +15,14 @@ public class Lec06Map {
                 .setMake("Honda")
                 .setModel("Civic")
                 .setYear(2000)
+                .setBodyStyle(BodyStyle.COUPE)
                 .build();
 
         var car2 = Car.newBuilder()
                 .setMake("Honda")
                 .setModel("Accord")
                 .setYear(2002)
+                .setBodyStyle(BodyStyle.SEDAN)
                 .build();
 
         var dealer = Dealer.newBuilder()
@@ -32,6 +35,7 @@ public class Lec06Map {
         log.info("2002 ? {}", dealer.containsInventory(2002));
         log.info("2003 ? {}", dealer.containsInventory(2003));
         log.info("2002 model: {}", dealer.getInventoryOrThrow(2002));
+        log.info("car2 body style: {}", car2.getBodyStyle());
     }
 
 }
