@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package sec05.v3;
+
+option java_multiple_files = true;
+option java_package = "org.mrpaulwoods.models.sec05.v3";
+
+/*
+  Requirement:
+  - add price info
+ */
+
+
+// developer didn't know 2 was used in v1,v2
+// so if they use 2 as the index it will clash with v1 & v2's model/year field
+
+// so use "reserved <index>" when we remove a field.
+// or use "reserved <label csv>" so future devs won't use the values.
+
+message Television {
+  string brand = 1;
+
+  reserved 2;
+  // --or--
+  reserved "year", "model";
+
+  Type type = 3;
+
+  int32 price = 4;
+}
+
+enum Type {
+  HD = 0;
+  UHD = 1;
+  OLED = 2;
+}
+
+
