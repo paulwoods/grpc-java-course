@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package sec05.v3;
+
+option java_multiple_files = true;
+option java_package = "org.mrpaulwoods.models.sec05.v3";
+
+/*
+  Requirement:
+  - We no longer need model/year! remove that!
+ */
+
+message Television {
+  string brand = 1;
+  Type type = 3;
+}
+
+enum Type {
+  HD = 0;
+  UHD = 1;
+  OLED = 2;
+}
+
+

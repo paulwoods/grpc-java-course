@@ -5,6 +5,7 @@ import org.mrpaulwoods.models.sec05.v2.Television;
 import org.mrpaulwoods.models.sec05.v2.Type;
 import org.mrpaulwoods.sec05.parser.V1Parser;
 import org.mrpaulwoods.sec05.parser.V2Parser;
+import org.mrpaulwoods.sec05.parser.V3Parser;
 import org.slf4j.Logger;
 
 public class V2VersionCompatibility {
@@ -23,6 +24,7 @@ public class V2VersionCompatibility {
         // change the type or index.
         V1Parser.parse(tv.toByteArray());
         V2Parser.parse(tv.toByteArray());
+        V3Parser.parse(tv.toByteArray());
     }
 
 }
