@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package sec05.v3;
+package sec05.v4;
 
 option java_multiple_files = true;
-option java_package = "org.mrpaulwoods.models.sec05.v3";
+option java_package = "org.mrpaulwoods.models.sec05.v4";
 
 /*
   Requirement:
