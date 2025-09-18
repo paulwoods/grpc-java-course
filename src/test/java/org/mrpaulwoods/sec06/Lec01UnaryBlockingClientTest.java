@@ -34,5 +34,5 @@ public class Lec01UnaryBlockingClientTest extends AbstractTest {
         Assertions.assertEquals(10, all.getAccounts(9).getAccountNumber());
         Assertions.assertEquals(100, all.getAccounts(9).getBalance());
     }
-    
+
 }
