@@ -5,6 +5,7 @@ import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
 import org.mrpaulwoods.models.sec06.*;
 import org.mrpaulwoods.sec06.repository.AccountRepository;
+import org.mrpaulwoods.sec06.requesthandlers.DepositRequestHandler;
 
 import java.util.concurrent.TimeUnit;
 
@@ -65,6 +66,11 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
             Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
         }
         responseObserver.onCompleted();
+    }
+
+    @Override
+    public StreamObserver<DepositRequest> deposit(StreamObserver<AccountBalance> responseObserver) {
+        return new DepositRequestHandler(responseObserver);
     }
 
 }
