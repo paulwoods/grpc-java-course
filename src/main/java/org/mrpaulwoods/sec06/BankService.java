@@ -52,12 +52,12 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
         var requestedAmount = request.getAmount();
         var accountBalance = AccountRepository.getBalance(accountNumber);
 
-        if(requestedAmount > accountBalance) {
+        if (requestedAmount > accountBalance) {
             responseObserver.onCompleted();
             return;
         }
 
-        for(int i = 0; i < (accountBalance/10); i++) {
+        for (int i = 0; i < (requestedAmount / 10); i++) {
             var money = Money.newBuilder().setAmount(10).build();
             responseObserver.onNext(money);
             log.info("money {} sent {}", i, money);
