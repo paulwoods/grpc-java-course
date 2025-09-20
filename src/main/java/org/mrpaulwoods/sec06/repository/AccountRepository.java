@@ -23,4 +23,9 @@ public class AccountRepository {
         return Collections.unmodifiableMap(db);
     }
 
+    public static void deductAmount(int accountNumber, int amount) {
+        db.computeIfPresent(accountNumber, (k, v) -> v - amount);
+
+    }
+
 }
