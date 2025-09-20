@@ -17,7 +17,7 @@ public class Lec04ClientStreamingTest extends AbstractTest {
     public void depositTest() {
 
         var responseObserver = ResponseObserver.<AccountBalance>create();
-        var requestObserver = this.stub.deposit(responseObserver);
+        var requestObserver = this.bankStub.deposit(responseObserver);
 
         // initial message - account number
         requestObserver.onNext(DepositRequest.newBuilder()
@@ -46,7 +46,7 @@ public class Lec04ClientStreamingTest extends AbstractTest {
     public void cancelStreamTest() {
 
         var responseObserver = ResponseObserver.<AccountBalance>create();
-        var requestObserver = this.stub.deposit(responseObserver);
+        var requestObserver = this.bankStub.deposit(responseObserver);
 
         // initial message - account number
         requestObserver.onNext(DepositRequest.newBuilder()
