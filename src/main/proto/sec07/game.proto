@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package sec07;
+
+option java_multiple_files = true;
+option java_package = "org.mrpaulwoods.models.sec07";
+
+message GuessRequest {
+  int32 guess = 1;
+}
+
+enum Result {
+  CORRECT = 0;
+  TOO_LOW = 1;
+  TOO_HIGH = 2;
+}
+
+message GuessResponse {
+  Result result = 1;
+  int32 attempt = 2;
+}
+
+service GuessNumberService {
+  rpc MakeGuess(stream GuessRequest) returns (stream GuessResponse);
+}
