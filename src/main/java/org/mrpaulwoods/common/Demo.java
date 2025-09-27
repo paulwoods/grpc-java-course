@@ -1,6 +1,6 @@
 package org.mrpaulwoods.common;
 
-import org.mrpaulwoods.sec09.BankService;
+import org.mrpaulwoods.sec10.BankService;
 
 /*
     a simple class to start the server with specific services for demo purposes.

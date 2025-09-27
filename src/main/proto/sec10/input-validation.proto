@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package sec09;
+package sec10;
 
 option java_multiple_files = true;
-option java_package = "org.mrpaulwoods.models.sec09";
+option java_package = "org.mrpaulwoods.models.sec10";
 
 message BalanceCheckRequest {
   int32 account_number = 1;
@@ -21,6 +21,16 @@ message WithdrawRequest {
 
 message Money {
   int32 amount = 1;
+}
+
+enum ValidationCode {
+  INVALID_ACCOUNT = 0;
+  INVALID_AMOUNT = 1;
+  INSUFFICIENT_BALANCE = 2;
+}
+
+message ErrorMessage {
+  ValidationCode validation_code = 1;
 }
 
 service BankService {
