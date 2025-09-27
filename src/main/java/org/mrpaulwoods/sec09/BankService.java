@@ -14,16 +14,23 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
     public static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(BankService.class);
 
     private static void sendMoney(WithdrawRequest request, StreamObserver<Money> responseObserver) {
-        var accountNumber = request.getAccountNumber();
-        var requestedAmount = request.getAmount();
-        for (int i = 0; i < (requestedAmount / 10); i++) {
-            var money = Money.newBuilder().setAmount(10).build();
-            responseObserver.onNext(money);
-            log.info("money {} sent {}", i, money);
-            AccountRepository.deductAmount(accountNumber, 10);
-            Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
+        try {
+            var accountNumber = request.getAccountNumber();
+            var requestedAmount = request.getAmount();
+            for (int i = 0; i < (requestedAmount / 10); i++) {
+                var money = Money.newBuilder().setAmount(10).build();
+                if (i == 3) {
+                    throw new RuntimeException("Boom!");
+                }
+                responseObserver.onNext(money);
+                log.info("money {} sent {}", i, money);
+                AccountRepository.deductAmount(accountNumber, 10);
+                Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
+            }
+            responseObserver.onCompleted();
+        } catch (Exception ex) {
+            responseObserver.onError(Status.INTERNAL.withDescription(ex.getMessage()).asRuntimeException());
         }
-        responseObserver.onCompleted();
     }
 
     @Override
