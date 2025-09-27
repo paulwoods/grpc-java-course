@@ -7,7 +7,7 @@ import java.util.Optional;
 public class RequestValidator {
 
     public static Optional<Status> validateAccount(int accountNumber) {
-        if(accountNumber > 0 && accountNumber < 11) {
+        if (accountNumber > 0 && accountNumber < 11) {
             return Optional.empty();
         } else {
             return Optional.of(Status.INVALID_ARGUMENT.withDescription("account number should be between 1 and 10"));
@@ -15,7 +15,7 @@ public class RequestValidator {
     }
 
     public static Optional<Status> isAmountDivisibleBy10(int amount) {
-        if(amount > 0 && amount % 10 == 0) {
+        if (amount > 0 && amount % 10 == 0) {
             return Optional.empty();
         } else {
             return Optional.of(Status.INVALID_ARGUMENT.withDescription("requested amount should be 10 multiples"));
@@ -23,7 +23,7 @@ public class RequestValidator {
     }
 
     public static Optional<Status> hasSufficientBalance(int amount, int balance) {
-        if(amount <= balance) {
+        if (amount <= balance) {
             return Optional.empty();
         } else {
             return Optional.of(Status.FAILED_PRECONDITION.withDescription("insufficient balance"));

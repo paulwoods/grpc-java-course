@@ -7,12 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.mrpaulwoods.common.ResponseObserver;
 import org.mrpaulwoods.models.sec09.AccountBalance;
 import org.mrpaulwoods.models.sec09.BalanceCheckRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class Lec01UnaryInputValidationTest extends AbstractTest {
-
-    public static final Logger log = LoggerFactory.getLogger(Lec01UnaryInputValidationTest.class);
 
     @Test
     public void blockingInputValidationTest() {
@@ -32,6 +28,6 @@ public class Lec01UnaryInputValidationTest extends AbstractTest {
 
         Assertions.assertTrue(observer.getItems().isEmpty());
         Assertions.assertNotNull(observer.getThrowable());
-        Assertions.assertEquals(Status.Code.INVALID_ARGUMENT, ((StatusRuntimeException)observer.getThrowable()).getStatus().getCode());
+        Assertions.assertEquals(Status.Code.INVALID_ARGUMENT, ((StatusRuntimeException) observer.getThrowable()).getStatus().getCode());
     }
 }

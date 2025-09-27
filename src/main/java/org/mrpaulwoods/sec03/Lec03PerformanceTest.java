@@ -10,7 +10,7 @@ public class Lec03PerformanceTest {
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(Lec03PerformanceTest.class);
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    public static void main(String[] args) {
+    static void main(String[] ignoredArgs) {
         var protoPerson = Person.newBuilder()
                 .setLastName("sam")
                 .setAge(12)
@@ -31,7 +31,7 @@ public class Lec03PerformanceTest {
                 -10000
         );
 
-        for(int i = 0; i < 5; ++i) {
+        for (int i = 0; i < 5; ++i) {
             runTest("json", () -> json(jsonPerson));
             runTest("proto", () -> proto(protoPerson));
         }

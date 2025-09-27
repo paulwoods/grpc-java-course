@@ -7,7 +7,7 @@ public class SimpleProtoDemo {
 
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(SimpleProtoDemo.class);
 
-    public static void main(String[] args) {
+    static void main(String[] ignoredArgs) {
         log.info("Hello World!");
 
         PersonOuterClass.Person person = PersonOuterClass.Person.newBuilder()

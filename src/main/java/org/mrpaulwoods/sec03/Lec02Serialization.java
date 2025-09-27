@@ -12,9 +12,9 @@ import java.nio.file.Path;
 public class Lec02Serialization {
 
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(Lec02Serialization.class);
-public static final Path PATH = Path.of("person.out");
+    public static final Path PATH = Path.of("person.out");
 
-    public static void main(String[] args) throws IOException {
+    static void main(String[] ignoredArgs) throws IOException {
         Person person = Person.newBuilder()
                 .setLastName("sam")
                 .setAge(12)

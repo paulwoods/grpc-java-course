@@ -13,6 +13,19 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
 
     public static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(BankService.class);
 
+    private static void sendMoney(WithdrawRequest request, StreamObserver<Money> responseObserver) {
+        var accountNumber = request.getAccountNumber();
+        var requestedAmount = request.getAmount();
+        for (int i = 0; i < (requestedAmount / 10); i++) {
+            var money = Money.newBuilder().setAmount(10).build();
+            responseObserver.onNext(money);
+            log.info("money {} sent {}", i, money);
+            AccountRepository.deductAmount(accountNumber, 10);
+            Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
+        }
+        responseObserver.onCompleted();
+    }
+
     @Override
     public void getAccountBalance(BalanceCheckRequest request, StreamObserver<AccountBalance> responseObserver) {
         RequestValidator.validateAccount(request.getAccountNumber())
@@ -34,7 +47,6 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
         responseObserver.onCompleted();
     }
 
-
     @Override
     public void withdraw(WithdrawRequest request, StreamObserver<Money> responseObserver) {
         RequestValidator.validateAccount(request.getAccountNumber())
@@ -45,18 +57,5 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
                         responseObserver::onError,
                         () -> sendMoney(request, responseObserver)
                 );
-    }
-
-    private static void sendMoney(WithdrawRequest request, StreamObserver<Money> responseObserver) {
-        var accountNumber = request.getAccountNumber();
-        var requestedAmount = request.getAmount();
-        for (int i = 0; i < (requestedAmount / 10); i++) {
-            var money = Money.newBuilder().setAmount(10).build();
-            responseObserver.onNext(money);
-            log.info("money {} sent {}", i, money);
-            AccountRepository.deductAmount(accountNumber, 10);
-            Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
-        }
-        responseObserver.onCompleted();
     }
 }

@@ -26,6 +26,7 @@ public class GrpcServer {
     public static GrpcServer create(BindableService... services) {
         return create(6565, services);
     }
+
     public GrpcServer start() {
         List<String> list = server.getServices()
                 .stream()

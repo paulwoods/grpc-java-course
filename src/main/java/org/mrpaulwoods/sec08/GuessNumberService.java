@@ -1,10 +1,10 @@
 package org.mrpaulwoods.sec08;
 
 import io.grpc.stub.StreamObserver;
-import org.mrpaulwoods.models.sec08.Result;
 import org.mrpaulwoods.models.sec08.GuessNumberGrpc;
 import org.mrpaulwoods.models.sec08.GuessRequest;
 import org.mrpaulwoods.models.sec08.GuessResponse;
+import org.mrpaulwoods.models.sec08.Result;
 import org.slf4j.Logger;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -31,7 +31,7 @@ public class GuessNumberService extends GuessNumberGrpc.GuessNumberImplBase {
 
         @Override
         public void onNext(GuessRequest guessRequest) {
-            if(guessRequest.getGuess() > secret) {
+            if (guessRequest.getGuess() > secret) {
                 this.send(Result.TOO_HIGH);
             } else if (guessRequest.getGuess() < secret) {
                 this.send(Result.TOO_LOW);

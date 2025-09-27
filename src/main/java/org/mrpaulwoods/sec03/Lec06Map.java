@@ -9,7 +9,7 @@ public class Lec06Map {
 
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(Lec06Map.class);
 
-    public static void main(String[] args) {
+    static void main(String[] ignoredArgs) {
 
         var car1 = Car.newBuilder()
                 .setMake("Honda")

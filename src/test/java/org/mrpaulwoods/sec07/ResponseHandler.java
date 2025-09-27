@@ -21,7 +21,7 @@ public class ResponseHandler implements StreamObserver<Output> {
     public void onNext(Output output) {
         this.size--;
         process(output);
-        if(this.size == 0)  {
+        if (this.size == 0) {
             log.info("-----------------------");
             this.request(ThreadLocalRandom.current().nextInt(1, 6));
         }

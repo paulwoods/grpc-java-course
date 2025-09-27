@@ -45,7 +45,7 @@ public class TransferRequestHandler implements StreamObserver<TransferRequest> {
         var toAccount = request.getToAccount();
         var status = TransferStatus.REJECTED;
 
-        if(AccountRepository.getBalance(fromAccount) >= amount && (fromAccount != toAccount)) {
+        if (AccountRepository.getBalance(fromAccount) >= amount && (fromAccount != toAccount)) {
             AccountRepository.deductAmount(fromAccount, amount);
             AccountRepository.addAmount(toAccount, amount);
             status = TransferStatus.COMPLETED;

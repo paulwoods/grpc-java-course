@@ -17,7 +17,7 @@ public class GrpcClient {
 
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(GrpcClient.class);
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
+    static void main(String[] ignoredArgs) throws ExecutionException, InterruptedException, TimeoutException {
 
         var channel = ManagedChannelBuilder
                 .forAddress("localhost", 6565)

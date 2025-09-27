@@ -7,7 +7,7 @@ import org.mrpaulwoods.sec09.BankService;
  */
 public class Demo {
 
-    public static void main(String[] args) {
+    static void main(String[] ignoredArgs) {
 
 //        GrpcServer.create(new BankService(), new TransferService())
 //        GrpcServer.create(new FlowControlService())

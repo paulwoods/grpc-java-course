@@ -7,7 +7,7 @@ public class Lec07DefaultValues {
 
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(Lec07DefaultValues.class);
 
-    public static void main(String[] args) {
+    static void main(String[] ignoredArgs) {
 
         var school1 = School.newBuilder().build();
 
@@ -36,6 +36,6 @@ public class Lec07DefaultValues {
         var car1 = Car.newBuilder().build();
         log.info("car1 body style: {}", car1.getBodyStyle());
 
-   }
+    }
 
 }

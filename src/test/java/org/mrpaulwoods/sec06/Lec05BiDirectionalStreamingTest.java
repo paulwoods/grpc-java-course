@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Lec05BiDirectionalStreamingTest extends AbstractTest{
+public class Lec05BiDirectionalStreamingTest extends AbstractTest {
 
     @Test
     public void transferTest() {

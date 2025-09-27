@@ -19,7 +19,7 @@ public class GuessResponseHandler implements StreamObserver<GuessResponse> {
     @Override
     public void onNext(GuessResponse guessResponse) {
         log.info("attempt: {}, result: {}", guessResponse.getAttempt(), guessResponse.getResult());
-        switch(guessResponse.getResult()) {
+        switch (guessResponse.getResult()) {
             case TOO_LOW -> this.send(this.middle, this.upper);
             case TOO_HIGH -> this.send(this.lower, this.middle);
         }

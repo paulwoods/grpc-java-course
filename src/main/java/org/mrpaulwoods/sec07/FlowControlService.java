@@ -42,7 +42,7 @@ public class FlowControlService extends FlowControlServiceGrpc.FlowControlServic
 
             emitted += requestSize.getSize();
 
-            if(emitted >= 100) {
+            if (emitted >= 100) {
                 log.info("completed");
                 responseObserver.onCompleted();
             }

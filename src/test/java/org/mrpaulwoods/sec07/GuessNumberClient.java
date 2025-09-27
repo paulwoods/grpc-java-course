@@ -42,9 +42,8 @@ public class GuessNumberClient extends AbstractChannelTest {
     public static class GuessNumberResponseHandler implements StreamObserver<GuessResponse> {
 
         public static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(GuessNumberResponseHandler.class);
-
-        private StreamObserver<GuessRequest> requestObserver;
         private final CountDownLatch latch = new CountDownLatch(1);
+        private StreamObserver<GuessRequest> requestObserver;
         private int guess = 50;
         private int lowerLimit = 1;
         private int upperLimit = 100;
@@ -59,21 +58,21 @@ public class GuessNumberClient extends AbstractChannelTest {
             }
         }
 
-        private void tooLow(GuessResponse guessResponse) {
+        private void tooLow(GuessResponse ignoredGuessResponse) {
             lowerLimit = guess + 1;
             guess = lowerLimit + (upperLimit - lowerLimit) / 2;
             log.info("CLIENT - guessing {}", guess);
             requestObserver.onNext(GuessRequest.newBuilder().setGuess(guess).build());
         }
 
-        private void tooHigh(GuessResponse guessResponse) {
+        private void tooHigh(GuessResponse ignoredGuessResponse) {
             upperLimit = guess - 1;
             guess = lowerLimit + (upperLimit - lowerLimit) / 2;
             log.info("CLIENT - guessing {}", guess);
             requestObserver.onNext(GuessRequest.newBuilder().setGuess(guess).build());
         }
 
-        private void correct(GuessResponse guessResponse) {
+        private void correct(GuessResponse ignoredGuessResponse) {
             log.info("CLIENT - correct - guess was {}", guess);
             requestObserver.onCompleted();
             latch.countDown();

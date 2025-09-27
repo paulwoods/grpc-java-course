@@ -10,7 +10,7 @@ public class Lec05Collection {
 
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(Lec05Collection.class);
 
-    public static void main(String[] args) {
+    static void main(String[] ignoredArgs) {
 
         // create books
 

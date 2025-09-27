@@ -11,7 +11,7 @@ public class Lec02WellKnownTypes {
 
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(Lec02WellKnownTypes.class);
 
-    public static void main(String[] args) {
+    static void main(String[] ignoredArgs) {
 
         var sample = Sample.newBuilder()
                 .setAge(Int32Value.of(12))

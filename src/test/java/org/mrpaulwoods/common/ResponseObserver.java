@@ -14,8 +14,8 @@ public class ResponseObserver<T> implements StreamObserver<T> {
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(ResponseObserver.class);
 
     private final List<T> list = Collections.synchronizedList(new ArrayList<>());
-    private Throwable throwable;
     private final CountDownLatch latch;
+    private Throwable throwable;
 
     private ResponseObserver(int countDown) {
         this.latch = new CountDownLatch(countDown);

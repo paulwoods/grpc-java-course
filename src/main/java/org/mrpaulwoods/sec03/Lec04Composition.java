@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 public class Lec04Composition {
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(Lec04Composition.class);
 
-    public static void main(String[] args) {
+    static void main(String[] ignoredArgs) {
 
         var address = Address.newBuilder()
                 .setStreet("123 main st")

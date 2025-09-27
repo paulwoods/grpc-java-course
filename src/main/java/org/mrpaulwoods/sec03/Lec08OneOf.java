@@ -9,7 +9,7 @@ public class Lec08OneOf {
 
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(Lec08OneOf.class);
 
-    public static void main(String[] args) {
+    static void main(String[] ignoredArgs) {
         var email = Email.newBuilder()
                 .setAddress("sam@gmail.com")
                 .setPassword("admin")

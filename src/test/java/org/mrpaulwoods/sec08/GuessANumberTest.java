@@ -9,7 +9,7 @@ import org.mrpaulwoods.common.GrpcServer;
 import org.mrpaulwoods.models.sec08.GuessNumberGrpc;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class GuessANumberTest extends AbstractChannelTest  {
+public class GuessANumberTest extends AbstractChannelTest {
 
     private final GrpcServer server = GrpcServer.create(new GuessNumberService());
     private GuessNumberGrpc.GuessNumberStub stub;

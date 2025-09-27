@@ -12,7 +12,7 @@ public class V2VersionCompatibility {
 
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(V2VersionCompatibility.class);
 
-    public static void main(String[] args) throws InvalidProtocolBufferException {
+    static void main(String[] ignoredArgs) throws InvalidProtocolBufferException {
 
         var tv = Television.newBuilder()
                 .setBrand("samsung")

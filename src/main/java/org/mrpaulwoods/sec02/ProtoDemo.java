@@ -7,7 +7,7 @@ public class ProtoDemo {
 
     public static final Logger log = org.slf4j.LoggerFactory.getLogger(ProtoDemo.class);
 
-    public static void main(String[] args) {
+    static void main(String[] ignoredArgs) {
 
         // create person1
         Person person1 = createPerson();
