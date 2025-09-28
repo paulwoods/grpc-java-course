@@ -1,6 +1,7 @@
 package org.mrpaulwoods.sec11;
 
 import com.google.common.util.concurrent.Uninterruptibles;
+import io.grpc.Context;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import org.mrpaulwoods.models.sec11.*;
@@ -36,13 +37,16 @@ public class DeadlineBankService extends BankServiceGrpc.BankServiceImplBase {
             return;
         }
 
-        for (int i = 0; i < (requestedAmount / 10); i++) {
+
+        for (int i = 0; i < (requestedAmount / 10) && !Context.current().isCancelled(); i++) {
             var money = Money.newBuilder().setAmount(10).build();
             responseObserver.onNext(money);
             log.info("money {} sent {}", i, money);
             AccountRepository.deductAmount(accountNumber, 10);
             Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
         }
+
+        log.info("streaming completed");
         responseObserver.onCompleted();
     }
 
