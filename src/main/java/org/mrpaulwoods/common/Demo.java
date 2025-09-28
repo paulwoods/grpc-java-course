@@ -9,7 +9,7 @@ public class Demo {
 
     static void main(String[] ignoredArgs) {
 
-//        GrpcServer.create(new BankService(), new TransferService())
+//        GrpcServer.create(new DeadlineBankService(), new TransferService())
 //        GrpcServer.create(new FlowControlService())
         GrpcServer.create(new BankService())
                 .start()
