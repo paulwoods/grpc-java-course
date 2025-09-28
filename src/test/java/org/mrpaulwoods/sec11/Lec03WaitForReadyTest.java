@@ -1,6 +1,7 @@
 package org.mrpaulwoods.sec11;
 
 import com.google.common.util.concurrent.Uninterruptibles;
+import io.grpc.Deadline;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -48,6 +49,7 @@ public class Lec03WaitForReadyTest extends AbstractChannelTest {
 
         var iterator = this.bankBlockingStub
                 .withWaitForReady() // <-- wait for the server to start
+                .withDeadline(Deadline.after(15, TimeUnit.SECONDS)) // <-- max total wait is 15 seconds
                 .withdraw(request);
 
         while (iterator.hasNext()) {
