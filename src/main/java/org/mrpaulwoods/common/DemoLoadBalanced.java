@@ -7,16 +7,16 @@ import org.mrpaulwoods.sec06.BankService;
  */
 public class DemoLoadBalanced {
 
-    private static class BankInstance1 {
-        static void main(String[] args) {
+    public static class BankInstance1 {
+        static void main(String[] ignoredArgs) {
             GrpcServer.create(6565, new BankService())
                     .start()
                     .await();
         }
     }
 
-    private static class BankInstance2 {
-        static void main(String[] args) {
+    public static class BankInstance2 {
+        static void main(String[] ignoredArgs) {
             GrpcServer.create(7575, new BankService())
                     .start()
                     .await();
