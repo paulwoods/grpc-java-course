@@ -88,10 +88,6 @@ public class Lec07LoadBalancingDemoTest {
         // get the response
         responseObserver.await();
 
-//        Assertions.assertEquals(1, responseObserver.getItems().size());
-//        Assertions.assertEquals(200, responseObserver.getItems().getFirst().getBalance());
-//        Assertions.assertNull(responseObserver.getThrowable());
-
     }
 
 }

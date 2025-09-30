@@ -6,6 +6,8 @@ import org.mrpaulwoods.sec06.BankService;
     a simple class to start the server with specific services for demo purposes.
  */
 public class DemoLoadBalanced {
+    static void main() {
+    }
 
     public static class BankInstance1 {
         static void main(String[] ignoredArgs) {

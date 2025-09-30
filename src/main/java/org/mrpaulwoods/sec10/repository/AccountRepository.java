@@ -18,16 +18,8 @@ public class AccountRepository {
         return db.get(accountNumber);
     }
 
-//    public static Map<Integer, Integer> getAllAccounts() {
-//        return Collections.unmodifiableMap(db);
-//    }
-
     public static void deductAmount(int accountNumber, int amount) {
         db.computeIfPresent(accountNumber, (_, v) -> v - amount);
     }
-
-//    public static void addAmount(int accountNumber, int amount) {
-//        db.computeIfPresent(accountNumber, (_, v) -> v + amount);
-//    }
 
 }

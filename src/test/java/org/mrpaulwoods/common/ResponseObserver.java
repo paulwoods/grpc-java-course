@@ -22,7 +22,7 @@ public class ResponseObserver<T> implements StreamObserver<T> {
     }
 
     public static <T> ResponseObserver<T> create() {
-        return new ResponseObserver<>(1);
+        return create(1);
     }
 
     public static <T> ResponseObserver<T> create(int countDown) {

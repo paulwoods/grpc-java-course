@@ -61,14 +61,14 @@ public class GuessNumberClient extends AbstractChannelTest {
         private void tooLow(GuessResponse ignoredGuessResponse) {
             lowerLimit = guess + 1;
             guess = lowerLimit + (upperLimit - lowerLimit) / 2;
-            log.info("CLIENT - guessing {}", guess);
+            log.info("CLIENT - raising guess to guessing {}", guess);
             requestObserver.onNext(GuessRequest.newBuilder().setGuess(guess).build());
         }
 
         private void tooHigh(GuessResponse ignoredGuessResponse) {
             upperLimit = guess - 1;
             guess = lowerLimit + (upperLimit - lowerLimit) / 2;
-            log.info("CLIENT - guessing {}", guess);
+            log.info("CLIENT - lowering guess to guessing {}", guess);
             requestObserver.onNext(GuessRequest.newBuilder().setGuess(guess).build());
         }
 
