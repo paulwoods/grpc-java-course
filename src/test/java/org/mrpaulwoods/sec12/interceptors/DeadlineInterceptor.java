@@ -3,6 +3,7 @@ package org.mrpaulwoods.sec12.interceptors;
 import io.grpc.*;
 
 import java.time.Duration;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class DeadlineInterceptor implements ClientInterceptor {
@@ -19,7 +20,11 @@ public class DeadlineInterceptor implements ClientInterceptor {
             CallOptions callOptions,
             Channel channel
     ) {
-        callOptions = callOptions.withDeadline(Deadline.after(duration.toMillis(), TimeUnit.MILLISECONDS));
+
+        // allow the developer to override the deadline if they want
+        callOptions = Objects.nonNull(callOptions.getDeadline()) ?
+                callOptions :
+                callOptions.withDeadline(Deadline.after(duration.toMillis(), TimeUnit.MILLISECONDS));
 
         return channel.newCall(methodDescriptor, callOptions);
     }
