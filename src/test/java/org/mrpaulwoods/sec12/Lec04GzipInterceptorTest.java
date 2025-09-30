@@ -7,7 +7,7 @@ import org.mrpaulwoods.sec12.interceptors.GZipInterceptor;
 
 import java.util.List;
 
-public class Lec04GZipInterceptorTest extends AbstractInterceptorTest {
+public class Lec04GzipInterceptorTest extends AbstractInterceptorTest {
 
     @Override
     protected List<ClientInterceptor> getClientInterceptors() {

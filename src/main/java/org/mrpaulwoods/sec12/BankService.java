@@ -3,7 +3,6 @@ package org.mrpaulwoods.sec12;
 import com.google.common.util.concurrent.Uninterruptibles;
 import io.grpc.Context;
 import io.grpc.Status;
-import io.grpc.stub.ServerCallStreamObserver;
 import io.grpc.stub.StreamObserver;
 import org.mrpaulwoods.models.sec12.*;
 import org.mrpaulwoods.sec12.repository.AccountRepository;
@@ -24,8 +23,8 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
                 .build();
 
         // enable compression on the messages from server to client
-        Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
-        ((ServerCallStreamObserver<AccountBalance>) responseObserver).setCompression("gzip");
+//        Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
+//        ((ServerCallStreamObserver<AccountBalance>) responseObserver).setCompression("gzip");
 
         responseObserver.onNext(ab);
         responseObserver.onCompleted();
