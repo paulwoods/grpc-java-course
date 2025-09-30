@@ -23,8 +23,7 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
                 .build();
 
         // enable compression on the messages from server to client
-//        Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
-//        ((ServerCallStreamObserver<AccountBalance>) responseObserver).setCompression("gzip");
+        Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
 
         responseObserver.onNext(ab);
         responseObserver.onCompleted();

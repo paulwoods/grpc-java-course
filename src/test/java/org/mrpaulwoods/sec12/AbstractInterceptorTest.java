@@ -8,21 +8,30 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 import org.mrpaulwoods.common.GrpcServer;
 import org.mrpaulwoods.models.sec12.BankServiceGrpc;
+import org.mrpaulwoods.sec12.interceptors.GzipResponseInterceptor;
 
 import java.util.List;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class AbstractInterceptorTest {
 
-    private final GrpcServer grpcServer = GrpcServer.create(new BankService());
+    private GrpcServer grpcServer;
     protected ManagedChannel channel;
     protected BankServiceGrpc.BankServiceStub bankStub;
     protected BankServiceGrpc.BankServiceBlockingStub bankBlockingStub;
 
     protected abstract List<ClientInterceptor> getClientInterceptors();
 
+    protected GrpcServer createServer() {
+        return GrpcServer.create(6565, builder -> {
+            builder.addService(new BankService())
+                    .intercept(new GzipResponseInterceptor());
+        });
+    }
+
     @BeforeAll
     public void setup() {
+        this.grpcServer = createServer();
         this.grpcServer.start();
         this.channel = ManagedChannelBuilder.forAddress("localhost", 6565)
                 .usePlaintext()

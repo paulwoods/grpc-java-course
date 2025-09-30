@@ -1,12 +1,12 @@
 package org.mrpaulwoods.common;
 
 import io.grpc.*;
-import org.mrpaulwoods.sec12.interceptors.GzipResponseInterceptor;
 import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class GrpcServer {
 
@@ -19,11 +19,14 @@ public class GrpcServer {
     }
 
     public static GrpcServer create(int port, BindableService... services) {
-        var builder = ServerBuilder
-                .forPort(port)
-                .intercept(new GzipResponseInterceptor());
+        return create(port, builder -> {
+            Arrays.asList(services).forEach(builder::addService);
+        });
+    }
 
-        Arrays.asList(services).forEach(builder::addService);
+    public static GrpcServer create(int port, Consumer<ServerBuilder<?>> consumer) {
+        var builder = ServerBuilder.forPort(port);
+        consumer.accept(builder);
         return new GrpcServer(builder.build());
     }
 
