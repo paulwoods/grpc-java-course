@@ -34,7 +34,7 @@ public class Lec01UnaryDeadlineTest extends AbstractTest {
     }
 
     @Test
-    public void blockingAsyncDeadlineTest() {
+    public void asyncDeadlineTest() {
         var observer = ResponseObserver.<AccountBalance>create();
 
         var request = BalanceCheckRequest.newBuilder()
