@@ -39,7 +39,7 @@ public class Lec02ServerStreamingDeadlineTest extends AbstractTest {
     }
 
     @Test
-    public void blockingAsyncDeadlineTest() {
+    public void asyncDeadlineTest() {
         var observer = ResponseObserver.<Money>create();
 
         var request = WithdrawRequest.newBuilder()
