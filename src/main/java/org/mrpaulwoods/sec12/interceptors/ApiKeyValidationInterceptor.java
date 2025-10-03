@@ -2,13 +2,19 @@ package org.mrpaulwoods.sec12.interceptors;
 
 import io.grpc.*;
 import org.mrpaulwoods.sec12.Constants;
+import org.slf4j.Logger;
 
 import java.util.Objects;
 
 public class ApiKeyValidationInterceptor implements ServerInterceptor {
 
+    public static final Logger log = org.slf4j.LoggerFactory.getLogger(ApiKeyValidationInterceptor.class);
+
     @Override
     public <ReqT, RespT> ServerCall.Listener<ReqT> interceptCall(ServerCall<ReqT, RespT> serverCall, Metadata metadata, ServerCallHandler<ReqT, RespT> serverCallHandler) {
+
+        String fullMethodName = serverCall.getMethodDescriptor().getFullMethodName();
+        log.info("### {}", fullMethodName);
 
         var apiKey = metadata.get(Constants.API_KEY);
         if (isValid(apiKey)) {
