@@ -13,8 +13,10 @@ public class ApiKeyValidationInterceptor implements ServerInterceptor {
     @Override
     public <ReqT, RespT> ServerCall.Listener<ReqT> interceptCall(ServerCall<ReqT, RespT> serverCall, Metadata metadata, ServerCallHandler<ReqT, RespT> serverCallHandler) {
 
+        // if you want to do method based interceptors, you can use the fullMethodName
         String fullMethodName = serverCall.getMethodDescriptor().getFullMethodName();
         log.info("### {}", fullMethodName);
+        // fullMethodName = sec12.BankService/GetAccountBalance
 
         var apiKey = metadata.get(Constants.API_KEY);
         if (isValid(apiKey)) {
