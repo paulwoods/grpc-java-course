@@ -1,6 +1,7 @@
 package org.mrpaulwoods.common;
 
 import io.grpc.*;
+import io.grpc.netty.shaded.io.grpc.netty.NettyServerBuilder;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -19,14 +20,14 @@ public class GrpcServer {
     }
 
     public static GrpcServer create(int port, BindableService... services) {
-        return create(port, builder -> {
-            Arrays.asList(services).forEach(builder::addService);
-        });
+        return create(port, builder ->
+                Arrays.asList(services).forEach(builder::addService)
+        );
     }
 
-    public static GrpcServer create(int port, Consumer<ServerBuilder<?>> consumer) {
+    public static GrpcServer create(int port, Consumer<NettyServerBuilder> consumer) {
         var builder = ServerBuilder.forPort(port);
-        consumer.accept(builder);
+        consumer.accept((NettyServerBuilder) builder);
         return new GrpcServer(builder.build());
     }
 
