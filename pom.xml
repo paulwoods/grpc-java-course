@@ -13,7 +13,7 @@
         <grpc.version>1.75.0</grpc.version>
         <protoc.version>3.25.5</protoc.version>
         <logback.version>1.5.13</logback.version>
-        <jackson.version>2.18.1</jackson.version>
+        <jackson.version>2.22.0</jackson.version>
         <tomcat.annotations.version>6.0.53</tomcat.annotations.version>
         <os.maven.plugin.version>1.7.1</os.maven.plugin.version>
         <protobuf.maven.plugin.version>0.6.1</protobuf.maven.plugin.version>
